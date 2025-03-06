@@ -108,6 +108,41 @@ class LinkedList:
             else:
                 prev_node.setNext(None)
 
+    # Deleting an intermidate Node is single linked list
+    def deleteFromLinkedListWithNode(self,node):
+        if self.listLength() == 0:
+            print('The list is empty')
+        else:
+            current = self.head
+            prev = None
+            found = False
+            while not found:
+                if current == node:
+                    found = True
+                elif current is None:
+                    print('Node is not found in the list')
+                else:
+                    prev = current
+                    current = current.getNext()
+            if prev is None:
+                self.head = current.getNext()
+            else:
+                prev.setNext(current.getNext())
+    # Delete with data fromlnked list
+    def deleteValue(self,value):
+        if self.listLength() == 0:
+            print('The list is empty')
+        else:
+            current_node = self.head
+            prev_node = self.head
+            while current_node.getNext() is not None or current_node.getValue() is not value:
+                if current_node.getValue() is value:
+                    prev_node.setNext(current_node.getNext())
+                    return
+                else:
+                    prev_node = current_node
+                    current_node = current_node.getNext()
+
 
 
 
